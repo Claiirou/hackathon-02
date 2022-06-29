@@ -1,7 +1,16 @@
 const db = require("../db");
 
 async function seed() {
-  await db.create({ data: { email: "test@visitor.com", name: "test" } });
+  await db.user.create({
+    data: {
+      firstname: "toto",
+      lastname: "alaplage",
+      agency: "lyon",
+      email: "toto@alaplage.com",
+      picture: "/image/profil.jpg",
+      xpyear: 2,
+    },
+  });
 }
 
 seed();
