@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@prisma/client": "4.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-react": "^7.28.0",
     "next": "12.1.6",
@@ -21,7 +22,8 @@
     "eslint": "^7.32.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "prisma": "^4.0.0"
   },
   "lint-staged": {
     "*.{json,js,ts,jsx,tsx,html,css}": [
@@ -30,5 +32,18 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --quiet --cache --fix"
     ]
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). hackathon",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JVRasa/hackathon-02.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JVRasa/hackathon-02/issues"
+  },
+  "homepage": "https://github.com/JVRasa/hackathon-02#readme"
 }
