@@ -8,12 +8,19 @@
     align-items: center;
 }
 
-.dashboard, .matchs, .ideas, .projects {
+.dashboard, .matchs, .ideas, .projects{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
+    text-align: center;
+}
+
+.dashboard, .matchs, .ideas, .projects a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .dashboard, .matchs, .ideas, .projects p {

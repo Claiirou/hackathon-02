@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { VerticalNavbar } from "./VerticalNavbar";
 
 export default function Layout({ children, pageTitle }) {
   return (
@@ -11,6 +12,7 @@ export default function Layout({ children, pageTitle }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>header</header>
+      <VerticalNavbar />
       <main>{children}</main>
       <footer>footer</footer>
     </>
