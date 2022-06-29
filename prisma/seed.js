@@ -11,6 +11,22 @@ async function seed() {
       xpyear: 2,
     },
   });
+  await db.concept.create({
+    data: {
+      name: "on est bien là",
+      description: "best idea ever",
+      domain: "phamarcology",
+      status: "en cours",
+      picture: "/image/dragon.png",
+      agency: "chinatown",
+    },
+  });
+  await db.techno.create({
+    data: {
+      name: "Javapas",
+      pictures: "/image/java.png",
+    },
+  });
 }
 
 seed();
