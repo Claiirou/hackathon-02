@@ -1,35 +1,125 @@
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState, useMemo } from "react";
 import TinderCard from "react-tinder-card";
 
-const Card = ({ name, image }) => {
-  const onSwipe = (direction) => {
-    console.log("You swiped: " + direction);
+const db = [
+  {
+    name: "Poule McCartney",
+    url: "/images/chicken-1.jpg",
+  },
+  {
+    name: "Poule Mirabel",
+    url: "/images/chicken-2.jpg",
+  },
+  {
+    name: "Poule Bocuse",
+    url: "/images/chicken-3.jpg",
+  },
+  {
+    name: "Poule Pogba",
+    url: "/images/turkey.png",
+  },
+];
+
+const Card = () => {
+  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
+  const [lastDirection, setLastDirection] = useState();
+  const currentIndexRef = useRef(currentIndex);
+
+  const childRefs = useMemo(
+    () =>
+      Array(db.length)
+        .fill(0)
+        .map((i) => React.createRef()),
+    []
+  );
+
+  const updateCurrentIndex = (val) => {
+    setCurrentIndex(val);
+    currentIndexRef.current = val;
   };
-  const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + " left the screen");
+
+  const canGoBack = currentIndex < db.length - 1;
+
+  const canSwipe = currentIndex >= 0;
+
+  const swiped = (direction, nameToDelete, index) => {
+    setLastDirection(direction);
+    updateCurrentIndex(index - 1);
   };
+
+  const outOfFrame = (name, idx) => {
+    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
+    // handle the case in which go back is pressed before card goes outOfFrame
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    // TODO: when quickly swipe and restore multiple times the same card,
+    // it happens multiple outOfFrame events are queued and the card disappear
+    // during latest swipes. Only the last outOfFrame event should be considered valid
+  };
+
+  const swipe = async (dir) => {
+    if (canSwipe && currentIndex < db.length) {
+      await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+    }
+  };
+
+  const goBack = async () => {
+    if (!canGoBack) return;
+    const newIndex = currentIndex + 1;
+    updateCurrentIndex(newIndex);
+    await childRefs[newIndex].current.restoreCard();
+  };
+
+  //   const onSwipe = (direction) => {
+  //     console.log("You swiped: " + direction);
+  //   };
+  //   const onCardLeftScreen = (myIdentifier) => {
+  //     console.log(myIdentifier + " left the screen");
+  //   };
   return (
-    <div>
-      <TinderCard
-        className="h-[400px] w-[300px] bg-[#E89759] rounded-xl flex justify-center items-center mx-auto"
-        onSwipe={(direction) => onSwipe(direction)}
-        onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-        preventSwipe={["up", "down"]}
-      >
-        <div className="flex-col items-center">
-          <Image
-            src={image}
-            width={250}
-            height={300}
-            alt={name}
-            className="rounded-xl"
-          />
-          <div>{name}</div>
+    <div className="w-[50%]">
+      {db.map((poule, i) => (
+        <div key={i} className="relative mx-auto">
+          <TinderCard
+            ref={childRefs[i]}
+            className="h-[400px] w-[300px] bg-[#E89759] rounded-xl flex justify-center items-center absolute inset-x-[50%] inset-y-[50%]"
+            onSwipe={(direction) => swiped(direction, poule.name, i)}
+            onCardLeftScreen={() => outOfFrame(poule.name, i)}
+            preventSwipe={["up", "down"]}
+          >
+            <div className="flex-col items-center">
+              <Image
+                src={poule.url}
+                width={250}
+                height={300}
+                alt={poule.name}
+                className="rounded-xl relative"
+              />
+              <div>{poule.name}</div>
+            </div>
+          </TinderCard>
         </div>
-      </TinderCard>
-      <button onClick={() => onSwipe("left")}>Swipe left</button>
-      <button onClick={() => onSwipe("right")}>Swipe right</button>
+      ))}
+      <div className="">
+        <button
+          className="rounded-full bg-deep-orange p-10"
+          onClick={() => swipe("left")}
+        >
+          Swipe left
+        </button>
+        <button
+          className="rounded-full bg-deep-orange p-10"
+          onClick={() => goBack()}
+        >
+          Undo swipe!
+        </button>
+        <button
+          className="rounded-full bg-deep-orange p-10"
+          onClick={() => swipe("right")}
+        >
+          Swipe right
+        </button>
+      </div>
     </div>
   );
 };

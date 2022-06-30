@@ -16,7 +16,7 @@ export default function Layout({ children, pageTitle }) {
       <header>header</header>
       <div className={s.flex_container}>
         <VerticalNavbar />
-        <main>{children}</main>
+        <main className="w-full">{children}</main>
       </div>
       <footer>footer</footer>
     </>
