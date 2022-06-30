@@ -1,14 +1,16 @@
 import { useRouter } from "next/router";
 import qs from "query-string";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-import IdeaCard from "../components/IdeaCard";
 import Layout from "../components/Layout";
+import MyGreatestIdea from "../components/MyGreatestIdea";
 
 export default function Ideas() {
   const router = useRouter();
   const { like = "" } = router.query;
   const [searchValue, setSearchValue] = useState("");
+  const [conceptList, setConceptList] = useState([]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -25,23 +27,29 @@ export default function Ideas() {
     setSearchValue(searchToLower);
   };
 
-  console.log(searchValue);
+  useEffect(() => {
+    const queryString = qs.stringify(router.query);
+    axios
+      .get(`/api/concept${queryString ? "?" : ""}${queryString}`)
+      .then((res) => setConceptList(res.data))
+      .catch(console.error);
+  }, [router.query]);
 
   return (
     <Layout pageTitle="Mes idées">
       <div className="w-[90%] m-auto">
         <h1 className="my-8 text-deep-orange text-4xl">Mes idées</h1>
-        <section className="w-full flex gap-4">
+        <section className="w-full flex gap-4 mb-8">
           <input
             type="text"
             placeholder="recherche"
-            className="italic cursor-text bg-white px-4 py-1 rounded-xl text-gray-700"
+            className="italic cursor-text bg-white px-4 py-1 rounded-xl text-gray-700 active:border-transparent"
             onChange={handleSearch}
             value={searchValue}
           />
           <select
             id="select-like"
-            className="cursor-pointer bg-white px-4 py-1 rounded-xl text-[#AAAAAA] focus:text-gray-700"
+            className="cursor-pointer bg-white px-4 py-1 rounded-xl text-[#AAAAAA] focus:text-gray-700 "
             value={like}
             onChange={(e) => setSearchParams({ like: e.target.value })}
           >
@@ -61,8 +69,17 @@ export default function Ideas() {
             Ajouter une idée
           </button>
         </section>
-        <section>
-          <IdeaCard />
+        <section className="grid grid-cols-3 gap-6 mb-10">
+          {conceptList
+            .filter(
+              (concept) =>
+                concept.domain.includes(searchValue) ||
+                concept.name.includes(searchValue)
+            )
+
+            .map((concept) => (
+              <MyGreatestIdea concept={concept} key={concept.id} />
+            ))}
         </section>
       </div>
     </Layout>
