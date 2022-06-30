@@ -49,7 +49,8 @@ export const VerticalNavbar = () => {
             align-items: center;
           }
           .active p {
-            color: orange;
+            color: #e89759;
+            font-weight: 800;
           }
         `}
       </style>
