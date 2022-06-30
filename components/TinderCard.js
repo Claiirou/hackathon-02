@@ -3,6 +3,7 @@ import React, { useRef, useState, useMemo, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import { GoRocket } from "react-icons/go";
 import axios from "axios";
+import useSound from "use-sound";
 
 const Card = ({ userList, index, idIdea, type }) => {
   const [currentIndex, setCurrentIndex] = useState(index);
@@ -10,6 +11,8 @@ const Card = ({ userList, index, idIdea, type }) => {
   const currentIndexRef = useRef(currentIndex);
   const [match, setMatch] = useState([]);
   const [isMatched, setIsMatched] = useState(false);
+
+  const [play] = useSound("/sound/artifice.mp3");
 
   useEffect(() => {
     axios.get("/api/match").then((res) => setMatch(res.data));
@@ -45,6 +48,12 @@ const Card = ({ userList, index, idIdea, type }) => {
       await childRefs[currentIndex].current.swipe(dir);
     }
   };
+
+  const handleSwipeRight = () => {
+    play();
+    swipe("right");
+  };
+
   console.log(lastDirection);
   console.log("isMatched", isMatched);
   console.log(match);
@@ -134,7 +143,7 @@ const Card = ({ userList, index, idIdea, type }) => {
           </div>
           <div
             className="rounded-full bg-deep-orange p-7 cursor-pointer"
-            onClick={() => swipe("right")}
+            onClick={handleSwipeRight}
           >
             <GoRocket size={50} style={{ color: "white" }} />
           </div>
