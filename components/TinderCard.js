@@ -114,7 +114,7 @@ const Card = ({ userList, index, idIdea, type }) => {
                       alt={poule.name}
                       className="rounded-xl relative"
                     />
-                    <div>{poule.name}</div>
+                    <div className="text-center mt-4">{poule.name}</div>
                   </div>
                 </div>
                 <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
