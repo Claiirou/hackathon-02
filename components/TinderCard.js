@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useRef, useState, useMemo } from "react";
 import TinderCard from "react-tinder-card";
+import { GoRocket } from "react-icons/go";
 
 const db = [
   {
@@ -100,25 +101,25 @@ const Card = () => {
           </TinderCard>
         </div>
       ))}
-      <div className="">
-        <button
-          className="rounded-full bg-deep-orange p-10"
+      <div className="flex justify-around">
+        <div
+          className="rounded-full bg-deep-orange p-7 cursor-pointer"
           onClick={() => swipe("left")}
         >
-          Swipe left
-        </button>
+          <GoRocket size={50} style={{ transform: "rotate(180deg)" }} />
+        </div>
         <button
-          className="rounded-full bg-deep-orange p-10"
+          className="rounded-full bg-deep-orange p-10 cursor-pointer"
           onClick={() => goBack()}
         >
           Undo swipe!
         </button>
-        <button
-          className="rounded-full bg-deep-orange p-10"
+        <div
+          className="rounded-full bg-deep-orange p-7 cursor-pointer"
           onClick={() => swipe("right")}
         >
-          Swipe right
-        </button>
+          <GoRocket size={50} />
+        </div>
       </div>
     </div>
   );
