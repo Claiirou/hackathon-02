@@ -1,37 +1,34 @@
 .v_nav_container {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    background-color: #183650;
-    height: calc(100vh - 4rem) ;
-    width: 10%;
-    align-items: center;
-    justify-content: center;
- 
+  border-right: 5px solid white;
+  display: flex;
+  flex-direction: column;
+  background-color: #183650;
+  height: calc(100vh - 4rem);
+  width: 10%;
+  align-items: center;
 }
 
-.dashboard, .matchs, .ideas, .projects{
-    margin: 2rem .5rem;
+.dashboard,
+.matchs,
+.ideas,
+.projects {
+  padding: 40px 0px;
+  color: white;
 }
 
 .linkbox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
-.dashboard, .matchs, .ideas, .projects p {
-    color: white;
-}
-
-.whiteSquare {
-    height: 2.5rem;
-    width: 2.5rem;
-    background-color: white;
-   margin-bottom: .5rem;
+.dashboard,
+.matchs,
+.ideas,
+.projects p {
+  color: white;
 }
