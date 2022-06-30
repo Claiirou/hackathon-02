@@ -1,5 +1,5 @@
 import Head from "next/head";
-
+import Header from "./Header";
 export default function Layout({ children, pageTitle }) {
   return (
     <>
@@ -10,7 +10,7 @@ export default function Layout({ children, pageTitle }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>header</header>
+      <Header />
       <main>{children}</main>
       <footer>footer</footer>
     </>
