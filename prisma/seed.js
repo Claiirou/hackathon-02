@@ -12,19 +12,48 @@ async function seed() {
       xpyear: 2,
     },
   });
-
-  await db.concept.create({
+  const martine = await db.user.create({
     data: {
-      name: "on est bien là",
-      description: "best idea ever",
-      domain: "phamarcology",
-      status: "en cours",
-      picture: "/image/fusee.png",
-      agency: "chinatown",
+      firstname: "Martine",
+      lastname: "Selacouledouce",
+      agency: "Annecy",
+      email: "mslcd@wahoo.com",
+      picture: "/image/martine.jpeg",
+      xpyear: 7,
+    },
+  });
+  const raymond = await db.user.create({
+    data: {
+      firstname: "Raymond",
+      lastname: "Barré",
+      agency: "Lilles",
+      email: "rmb@lafronce.com",
+      picture: "/image/raymond.jpeg",
+      xpyear: 35,
+    },
+  });
+  const kiki = await db.user.create({
+    data: {
+      firstname: "Kiki",
+      lastname: "Mbappe",
+      agency: "Paris",
+      email: "kiki@dufoot.com",
+      picture: "/image/kiki.jpeg",
+      xpyear: 2,
+    },
+  });
+  const claire = await db.user.create({
+    data: {
+      firstname: "Claire",
+      lastname: "Obscur",
+      agency: "Montpellier",
+      email: "clairement@adonf.com",
+      picture: "/image/claire.jpeg",
+      xpyear: 35,
     },
   });
 
-  const spatial01 = await db.concept.create({
+  const idee01 = await db.concept.create({
     data: {
       name: "spatial",
       description: "best idea ever",
@@ -35,21 +64,40 @@ async function seed() {
     },
   });
 
-  await db.concept.create({
+  const idee02 = await db.concept.create({
     data: {
-      firstname: "Martine",
-      lastname: "Selacouledouce",
-      agency: "Annecy",
-      email: "mslcd@wahoo.com",
-      picture: "/image/martine.jpeg.png",
-      xpyear: 35,
+      name: "on est bien là",
+      description: "best idea ever",
+      domain: "phamarcology",
+      status: "en cours",
+      picture: "/image/fusee.png",
+      agency: "chinatown",
     },
   });
-
-  const idee05 = await db.concept.create({
+  const idee03 = await db.concept.create({
     data: {
       name: "Une meilleure idée encore",
       description: "Who gives a damn. Amarite?!",
+      domain: "Existence",
+      status: "en cours",
+      picture: "/image/fusee.png",
+      agency: "chinatown",
+    },
+  });
+  const idee04 = await db.concept.create({
+    data: {
+      name: "Time for a beer ain't it?",
+      description: "Or a lot. Up to you guys?!",
+      domain: "Existence",
+      status: "en cours",
+      picture: "/image/fusee.png",
+      agency: "chinatown",
+    },
+  });
+  const idee05 = await db.concept.create({
+    data: {
+      name: "More border-radius on buttons",
+      description: "Clearly the true meaning of life",
       domain: "Existence",
       status: "en cours",
       picture: "/image/fusee.png",
