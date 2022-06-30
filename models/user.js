@@ -6,11 +6,11 @@ module.exports.createUser = ({
   agency,
   email,
   picture,
-  biogagraphy,
+  biography,
   xpyear,
 }) => {
   return db.user.create({
-    data: { firstname, lastname, agency, email, picture, biogagraphy, xpyear },
+    data: { firstname, lastname, agency, email, picture, biography, xpyear },
   });
 };
 

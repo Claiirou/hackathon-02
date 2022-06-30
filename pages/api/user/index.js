@@ -2,7 +2,7 @@ import base from "../../../middlewares/common";
 import { createUser, findAllUsers } from "../../../models/user";
 
 async function handlePostUser(req, res) {
-  const { firstname, lastname, agency, email, picture, biogagraphy, xpyear } =
+  const { firstname, lastname, agency, email, picture, biography, xpyear } =
     req.body;
   return res.status(201).send(
     await createUser({
@@ -11,7 +11,7 @@ async function handlePostUser(req, res) {
       agency,
       email,
       picture,
-      biogagraphy,
+      biography,
       xpyear,
     })
   );
