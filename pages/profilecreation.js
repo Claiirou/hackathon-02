@@ -61,7 +61,7 @@ export default function ProfileCreation() {
                   type="text"
                   id="firstname"
                   required
-                  className="rounded-xl p-2 px-5"
+                  className="rounded-xl p-2 px-5 shadow-xl"
                   value={formInfos.firstname}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, firstname: e.target.value })
@@ -76,7 +76,7 @@ export default function ProfileCreation() {
                   type="text"
                   id="lastname"
                   required
-                  className="rounded-xl p-2 px-5"
+                  className="rounded-xl p-2 px-5 shadow-xl"
                   value={formInfos.lastname}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, lastname: e.target.value })
@@ -91,7 +91,7 @@ export default function ProfileCreation() {
                   type="email"
                   id="email"
                   required
-                  className="rounded-xl p-2 px-5"
+                  className="rounded-xl p-2 px-5 shadow-xl"
                   value={formInfos.email}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, email: e.target.value })
@@ -106,7 +106,7 @@ export default function ProfileCreation() {
                   name="agency"
                   id="agency"
                   required
-                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
+                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white shadow-xl"
                   value={formInfos.agency}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, agency: e.target.value })
@@ -171,7 +171,7 @@ export default function ProfileCreation() {
                   id="photo"
                   required
                   accept="image/png, image/jpeg, image/jpg, image/gif"
-                  className="w-[100%] h-[100%] absolute top-0"
+                  className="w-[100%] h-[100%] absolute top-0 shadow-xl"
                   value={formInfos.picture}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, picture: e.target.value })
@@ -206,7 +206,7 @@ export default function ProfileCreation() {
             <textarea
               id="biography"
               required
-              className="w-[100%] h-[100px] rounded-xl p-2 px-5"
+              className="w-[100%] h-[100px] rounded-xl p-2 px-5 shadow-xl"
               value={formInfos.biography}
               onChange={(e) =>
                 setFormInfos({ ...formInfos, biography: e.target.value })
