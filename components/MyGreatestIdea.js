@@ -1,9 +1,10 @@
 import { MdComment } from "react-icons/md";
 import { BsFillChatDotsFill } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 
 export default function MyGreatestIdea() {
   return (
-    <div>
+    <div className="w-1/4 h-1/2">
       <h1>Agriculture</h1>
       <h2>Poulailler</h2>
       <p>Un poulailler avec de belles poulettes et des noms à croquer</p>
@@ -15,13 +16,17 @@ export default function MyGreatestIdea() {
         <option value="Projet validé">Projet validé</option>
         <option value="Obliviate">Obliviate</option>
       </select>
-      <img src="/image/fusee.png"></img>
-      <img src="/image/dragon.png"></img>
-      <img src="/image/profil.jpg"></img>
-      <img src="/image/poule1.jpg"></img>
-      <div>
+      <div className="flex justify-around">
+        <img className="w-8 h-8" src="/image/fusee.png"></img>
+        <img className="w-8 h-8" src="/image/dragon.png"></img>
+        <img className="w-8 h-8" src="/image/profil.jpg"></img>
+        <img className="w-8 h-8" src="/image/poule1.jpg"></img>
+      </div>
+
+      <div className="flex justify-around">
         <MdComment />
         <BsFillChatDotsFill />
+        <BsSearch />
       </div>
     </div>
   );
