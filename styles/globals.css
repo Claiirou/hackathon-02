@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Hind:wght@300&family=Raleway&family=Updock&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Hind:wght@300&family=Raleway&family=Updock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Montserrat:wght@100&display=swap');
 html,
 body {
   padding: 0;
