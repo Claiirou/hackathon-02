@@ -18,7 +18,6 @@ export default function Layout({ children, pageTitle }) {
         <VerticalNavbar />
         <main>{children}</main>
       </div>
-      <footer>footer</footer>
     </>
   );
 }
