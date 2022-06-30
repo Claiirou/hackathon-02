@@ -40,7 +40,6 @@ const Card = () => {
     currentIndexRef.current = val;
   };
 
-  const canGoBack = currentIndex < db.length - 1;
 
   const canSwipe = currentIndex >= 0;
 
@@ -64,19 +63,12 @@ const Card = () => {
     }
   };
 
-  const goBack = async () => {
-    if (!canGoBack) return;
-    const newIndex = currentIndex + 1;
-    updateCurrentIndex(newIndex);
-    await childRefs[newIndex].current.restoreCard();
-  };
-
-  //   const onSwipe = (direction) => {
-  //     console.log("You swiped: " + direction);
-  //   };
-  //   const onCardLeftScreen = (myIdentifier) => {
-  //     console.log(myIdentifier + " left the screen");
-  //   };
+//   const goBack = async () => {
+//     if (!canGoBack) return;
+//     const newIndex = currentIndex + 1;
+//     updateCurrentIndex(newIndex);
+//     await childRefs[newIndex].current.restoreCard();
+//   };
   return (
     <div className="w-[50%]">
       {db.map((poule, i) => (
