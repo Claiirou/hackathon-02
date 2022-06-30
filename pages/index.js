@@ -37,16 +37,11 @@ export default function Home() {
             <p className={s.card_content}> Mes suivis</p>
           </div>
           <div className={s.card}>
-            <h2 className={s.card_title}>Mes Matchs</h2>
-            <p className={s.card_content}>
-              Nombre de Matchs: {matchList.length}
-            </p>
+            <h2 className={s.card_title}>Mes Matchs ({matchList.length})</h2>
           </div>
           <div className={s.card}>
-            <h2 className={s.card_title}>Mes Idées</h2>
-            <p className={s.card_content}>
-              Nombre d'idées: {conceptsList.length}{" "}
-            </p>
+            <h2 className={s.card_title}>Mes Idées ({conceptsList.length})</h2>
+
             <ul>
               {conceptsList.map((pro) => (
                 <li className={s.card_content} key={pro.id}>
