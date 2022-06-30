@@ -2,7 +2,6 @@ import Layout from "../components/Layout";
 import { BsPlusLg } from "react-icons/bs";
 import { useRef, useState } from "react";
 import axios from "axios";
-import Image from "next/image";
 
 export default function ProfileCreation() {
   const defaultState = {
