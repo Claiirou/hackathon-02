@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout pageTitle="Accueil du super hackathon">
+    <Layout pageTitle="ApseeDating - Accueil du super hackathon">
       <div className={s.container}>
         <h1 className={s.main_title}>Dashboard</h1>
         <div className={s.cards_container}>
