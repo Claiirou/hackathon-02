@@ -1,17 +1,41 @@
+/* eslint-disable no-unused-vars */
 const db = require("../db");
 
 async function seed() {
-  const toto = await db.user.create({
+  const poule01 = await db.user.create({
     data: {
-      firstname: "Toto",
-      lastname: "Alaplage",
-      agency: "Lyon",
-      email: "toto@alaplage.com",
-      picture: "/image/dragon.png",
+      firstname: "Poule",
+      lastname: "Bocuse",
+      agency: "Poullaillerie",
+      email: "poulebocuse@alapoulaillerie.com",
+      picture: "/image/poule01.jpg",
       xpyear: 2,
     },
   });
-  const martine = await db.user.create({
+
+  await db.concept.create({
+    data: {
+      name: "on est bien là",
+      description: "best idea ever",
+      domain: "phamarcology",
+      status: "en cours",
+      picture: "/image/fusee.png",
+      agency: "chinatown",
+    },
+  });
+
+  const spatial01 = await db.concept.create({
+    data: {
+      name: "spatial",
+      description: "best idea ever",
+      domain: "espage",
+      status: "en cours",
+      picture: "/image/fusee01.jpg",
+      agency: "chinapool",
+    },
+  });
+
+  await db.concept.create({
     data: {
       firstname: "Martine",
       lastname: "Selacouledouce",
@@ -21,84 +45,8 @@ async function seed() {
       xpyear: 35,
     },
   });
-  const raymond = await db.user.create({
-    data: {
-      firstname: "Raymond",
-      lastname: "Alabarre",
-      agency: "Nantes",
-      email: "ralb@ol.com",
-      picture: "/image/raymond.jpeg",
-      xpyear: 47,
-    },
-  });
 
-  const kiki = await db.user.create({
-    data: {
-      firstname: "Kiki",
-      lastname: "Mbappe",
-      agency: "Paris",
-      email: "dugrosfoot@velodrome.fr",
-      picture: "/image/kiki.jpeg",
-      xpyear: 1,
-    },
-  });
-
-  const claire = await db.user.create({
-    data: {
-      firstname: "Claire",
-      lastname: "Obscur",
-      agency: "Lyon",
-      email: "jour@nuit.com",
-      picture: "/image/claire.jpeg",
-      xpyear: 1,
-    },
-  });
-
-  const idee01 = await db.concept.create({
-    data: {
-      name: "Ma super idée",
-      description: "best idea ever like for real ykwim?",
-      domain: "phamarcology",
-      status: "en cours",
-      picture: "/image/fusee.png",
-      agency: "chinatown",
-    },
-  });
-
-  const idee02 = await db.concept.create({
-    data: {
-      name: "Trois petits chats",
-      description: "chapeau de paille, paillasson, somnifère, fer a cheval...",
-      domain: "chanson",
-      status: "en cours",
-      picture: "/image/fusee.png",
-      agency: "chinatown",
-    },
-  });
-
-  const idee03 = await db.concept.create({
-    data: {
-      name: "Boire des coups",
-      description: "404 not found",
-      domain: "boredom",
-      status: "en cours",
-      picture: "/image/fusee.png",
-      agency: "chinatown",
-    },
-  });
-
-  const idee04 = await db.concept.create({
-    data: {
-      name: "La pâte à tartiner",
-      description: "A la cuillère ou au couteau? Vous avez 4h.",
-      domain: "philosofy",
-      status: "en cours",
-      picture: "/image/fusee.png",
-      agency: "chinatown",
-    },
-  });
-
-  idee05 = await db.concept.create({
+  const idee05 = await db.concept.create({
     data: {
       name: "Une meilleure idée encore",
       description: "Who gives a damn. Amarite?!",
@@ -137,6 +85,8 @@ async function seed() {
     data: {
       likeconcept: true,
       likeuser: true,
+      userId: poule01.id,
+      conceptId: spatial01.id,
     },
   });
 }
