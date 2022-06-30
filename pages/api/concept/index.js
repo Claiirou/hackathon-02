@@ -16,7 +16,10 @@ async function handlePostConcept(req, res) {
 }
 
 async function handleGetConcepts(req, res) {
-  res.send(await findAllConcepts());
+  res.send(await findAllConcepts()).catch((err) => {
+    console.log(err);
+    res.status(500).send("Error retrieving the categories from tdatabase");
+  });
 }
 
 export default base().post(handlePostConcept).get(handleGetConcepts);
