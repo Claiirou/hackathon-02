@@ -16,7 +16,7 @@ export default function Layout({ children, pageTitle }) {
       <Header />
       <div className={s.flex_container}>
         <VerticalNavbar />
-        <main>{children}</main>
+        <main className="mt-20 ml-[20%]">{children}</main>
       </div>
     </>
   );
