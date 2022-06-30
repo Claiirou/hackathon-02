@@ -1,5 +1,9 @@
 import s from "../styles/VerticalNavbar.module.css";
 import ActiveLink from "./ActiveLink";
+import { BsHeart } from "react-icons/bs";
+import { RiHomeLine } from "react-icons/ri";
+import { GoLightBulb } from "react-icons/go";
+import { BiBookContent } from "react-icons/bi";
 
 export const VerticalNavbar = () => {
   return (
@@ -8,7 +12,7 @@ export const VerticalNavbar = () => {
         <div className={s.dashboard}>
           {" "}
           <a className={s.linkbox}>
-            <div className={s.whiteSquare}></div>
+            <RiHomeLine style={{ fontSize: "2rem", marginBottom: "5px" }} />
             <p>Dashboard</p>
           </a>
         </div>
@@ -16,7 +20,7 @@ export const VerticalNavbar = () => {
       <ActiveLink href="/match" activeClassName="active">
         <div className={s.matchs}>
           <a className={s.linkbox}>
-            <div className={s.whiteSquare}></div>
+            <BsHeart style={{ fontSize: "2rem", marginBottom: "5px" }} />
             <p>Matchs</p>
           </a>
         </div>
@@ -24,7 +28,7 @@ export const VerticalNavbar = () => {
       <ActiveLink href="/ideas" activeClassName="active">
         <div className={s.ideas}>
           <a className={s.linkbox}>
-            <div className={s.whiteSquare}></div>
+            <GoLightBulb style={{ fontSize: "2rem", marginBottom: "5px" }} />
             <p>Idées</p>
           </a>
         </div>
@@ -32,7 +36,7 @@ export const VerticalNavbar = () => {
       <ActiveLink href="/projects" activeClassName="active">
         <div className={s.projects}>
           <a className={s.linkbox}>
-            <div className={s.whiteSquare}></div>
+            <BiBookContent style={{ fontSize: "2rem", marginBottom: "5px" }} />
             <p>Projets</p>
           </a>
         </div>
@@ -43,10 +47,11 @@ export const VerticalNavbar = () => {
           .active {
             background-color: #104c83;
             width: 100%;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: orange;
+            padding: 40px 0px;
           }
           .active p {
             color: orange;
