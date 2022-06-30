@@ -24,7 +24,7 @@ async function seed() {
   await db.techno.create({
     data: {
       name: "Javapas",
-      pictures: "/image/java.png",
+      picture: "/image/java.png",
     },
   });
   await db.match.create({
