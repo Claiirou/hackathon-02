@@ -10,9 +10,12 @@ export default function Ideas() {
           <input
             type="text"
             placeholder="recherche"
-            className="italic cursor-text"
+            className="italic cursor-text bg-white px-4 rounded-xl"
           />
-          <select id="select-like" className="cursor-pointer">
+          <select
+            id="select-like"
+            className="cursor-pointer bg-white px-4 rounded-xl"
+          >
             <option value="showall">Tout montrer</option>
             <option value="showliked">
               Ne montrer que les idées que j'ai liké
@@ -21,7 +24,10 @@ export default function Ideas() {
               Ne montrer que les idées que j'ai créé
             </option>
           </select>
-          <button type="button" className="cursor-pointer">
+          <button
+            type="button"
+            className="cursor-pointer bg-white px-4 rounded-xl"
+          >
             Ajouter une idée
           </button>
         </section>
