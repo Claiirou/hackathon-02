@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import qs from "query-string";
+import { useState } from "react";
 
 import IdeaCard from "../components/IdeaCard";
 import Layout from "../components/Layout";
@@ -7,6 +8,7 @@ import Layout from "../components/Layout";
 export default function Ideas() {
   const router = useRouter();
   const { like = "" } = router.query;
+  const [searchValue, setSearchValue] = useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -18,6 +20,13 @@ export default function Ideas() {
     router.push(`/ideas/${queryString ? "?" : ""}${queryString}`);
   };
 
+  const handleSearch = (e) => {
+    const searchToLower = e.target.value.toLowerCase();
+    setSearchValue(searchToLower);
+  };
+
+  console.log(searchValue);
+
   return (
     <Layout pageTitle="Mes idées">
       <div className="w-[90%] m-auto">
@@ -26,11 +35,13 @@ export default function Ideas() {
           <input
             type="text"
             placeholder="recherche"
-            className="italic cursor-text bg-white px-4 rounded-xl text-gray-700"
+            className="italic cursor-text bg-white px-4 py-1 rounded-xl text-gray-700"
+            onChange={handleSearch}
+            value={searchValue}
           />
           <select
             id="select-like"
-            className="cursor-pointer bg-white px-4 rounded-xl text-[#AAAAAA] focus:text-gray-700"
+            className="cursor-pointer bg-white px-4 py-1 rounded-xl text-[#AAAAAA] focus:text-gray-700"
             value={like}
             onChange={(e) => setSearchParams({ like: e.target.value })}
           >
@@ -44,7 +55,7 @@ export default function Ideas() {
           </select>
           <button
             type="button"
-            className="cursor-pointer bg-white px-4 rounded-xl text-gray-700 italic hover:bg-light-blue hover:text-white duration-500 ease-in-out"
+            className="cursor-pointer bg-white px-4 py-1 rounded-xl text-gray-700 italic hover:bg-light-blue hover:text-white duration-500 ease-in-out"
             onClick={(e) => handleClick(e)}
           >
             Ajouter une idée
