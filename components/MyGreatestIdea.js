@@ -1,8 +1,10 @@
 import { MdComment } from "react-icons/md";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function MyGreatestIdea({ match }) {
+  const router = useRouter();
   return (
     <div className="bg-white rounded-lg p-4 flex flex-col gap-2">
       <div className="flex space-around">
@@ -33,7 +35,15 @@ export default function MyGreatestIdea({ match }) {
         <div className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-deep-blue hover:border-deep-blue duration-500 ease-in-out">
           <BsFillChatDotsFill />{" "}
         </div>
-        <div className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-[#464646] hover:border-[#464646] duration-500 ease-in-out">
+        <div
+          className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-[#464646] hover:border-[#464646] duration-500 ease-in-out"
+          onClick={() => {
+            router.push({
+              pathname: "/match/[idea_id]",
+              query: { idea_id: match.conceptId },
+            });
+          }}
+        >
           <BsSearch />{" "}
         </div>
       </div>
