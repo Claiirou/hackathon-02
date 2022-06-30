@@ -9,7 +9,7 @@ module.exports.createMatch = ({ likeconcept, likeuser }) => {
 module.exports.findAllMatchs = () =>
   db.match.findMany({
     include: {
-      users: {
+      user: {
         select: {
           firstname: true,
           lastname: true,
@@ -20,7 +20,7 @@ module.exports.findAllMatchs = () =>
           xpyear: true,
         },
       },
-      concepts: {
+      concept: {
         select: {
           name: true,
           description: true,
