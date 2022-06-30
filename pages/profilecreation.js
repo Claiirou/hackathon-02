@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import { BsPlusLg } from "react-icons/bs";
 import { useRef, useState } from "react";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ProfileCreation() {
   const defaultState = {
@@ -27,6 +28,17 @@ export default function ProfileCreation() {
     try {
       await axios.post("/api/user", formInfos);
       setFormInfos(defaultState);
+      toast.success("Profil créé avec succès", {
+        style: {
+          border: "1px solid #183650",
+          padding: "16px",
+          color: "#183650",
+        },
+        iconTheme: {
+          primary: "#183650",
+          secondary: "#FFFAEE",
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +46,9 @@ export default function ProfileCreation() {
   return (
     <Layout pageTitle="Création d'un profil">
       <div className="px-10 mt-6">
+        <div>
+          <Toaster />
+        </div>
         <h1 className="text-4xl text-deep-orange">Création de profil :</h1>
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between align-top">
@@ -45,6 +60,7 @@ export default function ProfileCreation() {
                 <input
                   type="text"
                   id="firstname"
+                  required
                   className="rounded-xl p-2 px-5"
                   value={formInfos.firstname}
                   onChange={(e) =>
@@ -59,6 +75,7 @@ export default function ProfileCreation() {
                 <input
                   type="text"
                   id="lastname"
+                  required
                   className="rounded-xl p-2 px-5"
                   value={formInfos.lastname}
                   onChange={(e) =>
@@ -71,8 +88,9 @@ export default function ProfileCreation() {
                   Email :
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
+                  required
                   className="rounded-xl p-2 px-5"
                   value={formInfos.email}
                   onChange={(e) =>
@@ -87,6 +105,7 @@ export default function ProfileCreation() {
                 <select
                   name="agency"
                   id="agency"
+                  required
                   className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
                   value={formInfos.agency}
                   onChange={(e) =>
@@ -130,6 +149,7 @@ export default function ProfileCreation() {
                 <input
                   type="number"
                   id="xpyear"
+                  required
                   className="rounded-xl p-2 px-5"
                   value={formInfos.xpyear}
                   onChange={(e) =>
@@ -149,6 +169,7 @@ export default function ProfileCreation() {
                 <input
                   type="file"
                   id="photo"
+                  required
                   accept="image/png, image/jpeg, image/jpg, image/gif"
                   className="w-[100%] h-[100%] absolute top-0"
                   value={formInfos.picture}
@@ -184,6 +205,7 @@ export default function ProfileCreation() {
             </label>
             <textarea
               id="biography"
+              required
               className="w-[100%] h-[100px] rounded-xl p-2 px-5"
               value={formInfos.biography}
               onChange={(e) =>
