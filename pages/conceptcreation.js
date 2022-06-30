@@ -49,7 +49,7 @@ export default function ConceptCreation() {
         <div>
           <Toaster />
         </div>
-        <h1 className="text-4xl text-deep-orange">Création de concept :</h1>
+        <h1 className="text-4xl text-deep-orange ">Création de concept :</h1>
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between align-top">
             <div className=" w-[50%]">
@@ -60,7 +60,7 @@ export default function ConceptCreation() {
                 <input
                   type="text"
                   id="conceptName"
-                  className="rounded-xl p-2 px-5"
+                  className="rounded-xl p-2 px-5 shadow-xl"
                   required
                   value={formInfos.name}
                   onChange={(e) =>
@@ -76,7 +76,7 @@ export default function ConceptCreation() {
                   name="concept"
                   id="status"
                   required
-                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
+                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white shadow-xl"
                   value={formInfos.status}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, status: e.target.value })
@@ -98,7 +98,7 @@ export default function ConceptCreation() {
                   type="text"
                   id="domain"
                   required
-                  className="rounded-xl p-2 px-5"
+                  className="rounded-xl p-2 px-5 shadow-xl"
                   value={formInfos.domain}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, domain: e.target.value })
@@ -113,7 +113,7 @@ export default function ConceptCreation() {
                   name="agency"
                   id="agency"
                   required
-                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
+                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white shadow-xl"
                   value={formInfos.agency}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, agency: e.target.value })
@@ -160,7 +160,7 @@ export default function ConceptCreation() {
                   id="photo"
                   required
                   accept="image/png, image/jpeg, image/jpg, image/gif"
-                  className="w-[100%] h-[100%] absolute top-0"
+                  className="w-[100%] h-[100%] absolute top-0 shadow-xl"
                   value={formInfos.picture}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, picture: e.target.value })
@@ -194,7 +194,7 @@ export default function ConceptCreation() {
             <textarea
               id="description"
               required
-              className="w-[100%] h-[100px] rounded-xl p-2 px-5"
+              className="w-[100%] h-[100px] rounded-xl p-2 px-5 shadow-xl"
               value={formInfos.description}
               onChange={(e) =>
                 setFormInfos({ ...formInfos, description: e.target.value })
@@ -202,7 +202,7 @@ export default function ConceptCreation() {
             />
             <button
               type="submit"
-              className="py-2 bg-deep-orange text-white w-[15%] align-middle rounded-xl self-center mt-5"
+              className="py-2 bg-deep-orange text-white w-[15%] align-middle rounded-xl self-center mt-5 shadow-xl"
             >
               Ajouter
             </button>
