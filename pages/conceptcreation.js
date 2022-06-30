@@ -3,6 +3,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { useRef, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ConceptCreation() {
   const defaultState = {
@@ -27,6 +28,17 @@ export default function ConceptCreation() {
     try {
       await axios.post("/api/concept", formInfos);
       setFormInfos(defaultState);
+      toast.success("Concept créé avec succès", {
+        style: {
+          border: "1px solid #183650",
+          padding: "16px",
+          color: "#183650",
+        },
+        iconTheme: {
+          primary: "#183650",
+          secondary: "#FFFAEE",
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +46,9 @@ export default function ConceptCreation() {
   return (
     <Layout pageTitle="Création d'un concept (idée/projet)">
       <div className="px-10 mt-6">
+        <div>
+          <Toaster />
+        </div>
         <h1 className="text-4xl text-deep-orange">Création de concept :</h1>
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between align-top">
@@ -46,6 +61,7 @@ export default function ConceptCreation() {
                   type="text"
                   id="conceptName"
                   className="rounded-xl p-2 px-5"
+                  required
                   value={formInfos.name}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, name: e.target.value })
@@ -59,6 +75,7 @@ export default function ConceptCreation() {
                 <select
                   name="concept"
                   id="status"
+                  required
                   className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
                   value={formInfos.status}
                   onChange={(e) =>
@@ -80,6 +97,7 @@ export default function ConceptCreation() {
                 <input
                   type="text"
                   id="domain"
+                  required
                   className="rounded-xl p-2 px-5"
                   value={formInfos.domain}
                   onChange={(e) =>
@@ -91,15 +109,45 @@ export default function ConceptCreation() {
                 <label htmlFor="agency" className="py-1">
                   Agence :
                 </label>
-                <input
-                  type="text"
+                <select
+                  name="agency"
                   id="agency"
-                  className="rounded-xl p-2 px-5"
+                  required
+                  className="rounded-xl p-2 bg-white px-5 border-r-8 border-white"
                   value={formInfos.agency}
                   onChange={(e) =>
                     setFormInfos({ ...formInfos, agency: e.target.value })
                   }
-                />
+                >
+                  <option value="Choisir une option">Choisir une option</option>
+                  <option value="Aix-en-Provence">Aix-en-Provence</option>
+                  <option value="Aveiro">Aveiro</option>
+                  <option value="Bordeaux">Bordeaux</option>
+                  <option value="Brest">Brest</option>
+                  <option value="Bruxelles">Bruxelles</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Casablanca">Casablanca</option>
+                  <option value="Clermont-Ferrand">Clermont-Ferrand</option>
+                  <option value="Dijon">Dijon</option>
+                  <option value="Genève">Genève</option>
+                  <option value="Le Mans">Le Mans</option>
+                  <option value="Lille">Lille</option>
+                  <option value="Lyon">Lyon</option>
+                  <option value="Montpellier">Montpellier</option>
+                  <option value="Munich">Munich</option>
+                  <option value="Nantes">Nantes</option>
+                  <option value="Nice-Sofia Antipolis">
+                    Nice-Sofia Antipolis
+                  </option>
+                  <option value="Niort">Niort</option>
+                  <option value="Orléans">Orléans</option>
+                  <option value="Paris">Paris</option>
+                  <option value="Rennes">Rennes</option>
+                  <option value="Strasbourg">Strasbourg</option>
+                  <option value="Toulouse">Toulouse</option>
+                  <option value="Tours">Tours</option>
+                  <option value="Vernon">Vernon</option>
+                </select>
               </div>
             </div>
             <div className="my-4 py-2 px-3 w-[50%] flex justify-center flex-col items-center">
@@ -110,6 +158,7 @@ export default function ConceptCreation() {
                 <input
                   type="file"
                   id="photo"
+                  required
                   accept="image/png, image/jpeg, image/jpg, image/gif"
                   className="w-[100%] h-[100%] absolute top-0"
                   value={formInfos.picture}
@@ -144,6 +193,7 @@ export default function ConceptCreation() {
             </label>
             <textarea
               id="description"
+              required
               className="w-[100%] h-[100px] rounded-xl p-2 px-5"
               value={formInfos.description}
               onChange={(e) =>
