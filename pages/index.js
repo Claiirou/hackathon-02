@@ -25,7 +25,6 @@ export default function Home() {
       });
   }, []);
 
-  console.log(conceptsList);
   return (
     <Layout pageTitle="Accueil du super hackathon">
       <div className={s.container}>
