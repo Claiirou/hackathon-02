@@ -17,7 +17,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-light-orange h-16 w-full text-white flex items-center justify-between border-b-4 border-[#C8C8C8] fixed top-0 left-0">
+    <header className="bg-light-orange h-16 w-full text-white flex items-center justify-between border-b-4 border-[#C8C8C8] fixed top-0 left-0 z-40">
       <div className="ml-4  md:ml-48">
         <Link href="/">
           <a className="font-['Montserrat'] text-xl md:text-3xl  font-black tracking-wider">
