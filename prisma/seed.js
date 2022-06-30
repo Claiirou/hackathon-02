@@ -7,7 +7,7 @@ async function seed() {
       lastname: "alaplage",
       agency: "lyon",
       email: "toto@alaplage.com",
-      picture: "/image/profil.jpg",
+      picture: "/image/dragon.png",
       xpyear: 2,
     },
   });
@@ -17,7 +17,7 @@ async function seed() {
       description: "best idea ever",
       domain: "phamarcology",
       status: "en cours",
-      picture: "/image/dragon.png",
+      picture: "/image/fusee.png",
       agency: "chinatown",
     },
   });
@@ -25,6 +25,12 @@ async function seed() {
     data: {
       name: "Javapas",
       pictures: "/image/java.png",
+    },
+  });
+  await db.match.create({
+    data: {
+      likeconcept: true,
+      likeuser: true,
     },
   });
 }
