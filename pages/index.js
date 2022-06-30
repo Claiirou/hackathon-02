@@ -5,12 +5,23 @@ import s from "../styles/Home.module.css";
 
 export default function Home() {
   const [conceptsList, setConceptsList] = useState([]);
+  const [matchList, setMatchList] = useState([]);
+
   useEffect(() => {
     axios
       .get("/api/concept")
       .then((res) => res.data)
       .then((data) => {
         setConceptsList(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("/api/match")
+      .then((res) => res.data)
+      .then((data) => {
+        setMatchList(data);
       });
   }, []);
 
@@ -27,12 +38,14 @@ export default function Home() {
           </div>
           <div className={s.card}>
             <h2 className={s.card_title}>Mes Matchs</h2>
-            <p className={s.card_content}>Nombre de Matchs:</p>
+            <p className={s.card_content}>
+              Nombre de Matchs: {matchList.length}
+            </p>
           </div>
           <div className={s.card}>
             <h2 className={s.card_title}>Mes Idées</h2>
             <p className={s.card_content}>
-              Nombre de d'idées: {conceptsList.length}{" "}
+              Nombre d'idées: {conceptsList.length}{" "}
             </p>
             <ul>
               {conceptsList.map((pro) => (
