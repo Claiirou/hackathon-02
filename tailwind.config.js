@@ -14,6 +14,9 @@ module.exports = {
         "bg-grey": "#F0F0F0",
         "dark-grey": "#D9D9D9",
       },
+      fontFamily: {
+        Montserrat: ["Montserrat", "sans-serif"],
+      },
     },
   },
   plugins: [],
