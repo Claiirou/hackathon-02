@@ -3,49 +3,17 @@ import React, { useRef, useState, useMemo } from "react";
 import TinderCard from "react-tinder-card";
 import { GoRocket } from "react-icons/go";
 
-const db = [
-  {
-    name: "Poule McCartney",
-    url: "/images/chicken-1.jpg",
-    biography: "A eu beaucoup de succes avec son groupe Les Beatles",
-    agency: "Londre",
-    xpyear: "3 ans",
-  },
-  {
-    name: "Poule Mirabel",
-    url: "/images/chicken-2.jpg",
-    biography: "A la langue bien pendue",
-    agency: "Londre",
-    xpyear: "1 ans",
-  },
-  {
-    name: "Poule Bocuse",
-    url: "/images/chicken-3.jpg",
-    biography: "Va vous donner un orgasme culinaire",
-    agency: "Lyon",
-    xpyear: "25 ans",
-  },
-  {
-    name: "Poule Pogba",
-    url: "/images/turkey.png",
-    biography:
-      "Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,Court derrière un ballon pour ganger sa vie,",
-    agency: "Manchester",
-    xpyear: "5 ans",
-  },
-];
-
-const Card = () => {
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
+const Card = ({ userList, index }) => {
+  const [currentIndex, setCurrentIndex] = useState(index);
   const [lastDirection, setLastDirection] = useState();
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs = useMemo(
     () =>
-      Array(db.length)
+      Array(index)
         .fill(0)
-        .map(() => React.createRef()),
-    []
+        .map((i) => React.createRef()),
+    [index]
   );
 
   const updateCurrentIndex = (val) => {
@@ -55,9 +23,9 @@ const Card = () => {
 
   const canSwipe = currentIndex >= 0;
 
-  const swiped = (direction, nameToDelete, index) => {
+  const swiped = (direction, nameToDelete, i) => {
     setLastDirection(direction);
-    updateCurrentIndex(index - 1);
+    updateCurrentIndex(i - 1);
   };
 
   const outOfFrame = (name, idx) => {
@@ -70,33 +38,34 @@ const Card = () => {
   };
 
   const swipe = async (dir) => {
-    if (canSwipe && currentIndex < db.length) {
+    if (canSwipe && currentIndex < index) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
   };
 
   console.log(lastDirection);
+  console.log("ref", childRefs);
   return (
     <>
       <div className="w-[50%]">
-        {db.map((poule, i) => (
+        {userList.map((poule, i) => (
           <div key={i} className="relative mx-auto">
             <TinderCard
               ref={childRefs[i]}
-              onSwipe={(direction) => swiped(direction, poule.name, i)}
-              onCardLeftScreen={() => outOfFrame(poule.name, i)}
+              onSwipe={(direction) => swiped(direction, poule.firstname, i)}
+              onCardLeftScreen={() => outOfFrame(poule.firstname, i)}
               preventSwipe={["up", "down"]}
             >
               <div className="h-[450px] w-[350px] bg-[#E89759] rounded-xl flex justify-center items-center absolute left-[30%] top-[50px]">
                 <div className="flex-col items-center">
                   <Image
-                    src={poule.url}
+                    src={poule.picture}
                     width={250}
                     height={300}
-                    alt={poule.name}
+                    alt={poule.firstname}
                     className="rounded-xl relative"
                   />
-                  <div>{poule.name}</div>
+                  <div>{`${poule.firstname} ${poule.lastname}`}</div>
                 </div>
               </div>
               <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
