@@ -33,11 +33,18 @@ export default function Home() {
         <div className={s.cards_container}>
           <div className={s.card}>
             <h2 className={s.card_title}>Mon historique</h2>
-            <p className={s.card_content}> Mes alertes</p>
-            <p className={s.card_content}> Mes suivis</p>
+            <p className={s.nothingHere}>Il n'y a rien à afficher içi !</p>
           </div>
           <div className={s.card}>
             <h2 className={s.card_title}>Mes Matchs ({matchList.length})</h2>
+            <ul>
+              {matchList.map((m) => (
+                <li className={s.card_content} key={m.id}>
+                  With <span className={s.whoisit}> {m.user.firstname} </span>
+                  about <span className={s.whatisit}> {m.concept.name} </span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className={s.card}>
             <h2 className={s.card_title}>Mes Idées ({conceptsList.length})</h2>
@@ -45,14 +52,16 @@ export default function Home() {
             <ul>
               {conceptsList.map((pro) => (
                 <li className={s.card_content} key={pro.id}>
-                  "{pro.name}"
+                  - {pro.name}
                 </li>
               ))}
             </ul>
           </div>
           <div className={s.card}>
             <h2 className={s.card_title}>Mes Projets</h2>
-            <p className={s.card_content}>Nombre de likes: </p>
+            <p className={s.nothingHere}>
+              Vous n'êtes actuellement associé à aucun projet :/
+            </p>
           </div>
         </div>
       </div>

@@ -23,13 +23,36 @@
   padding: 1rem;
   margin: 2rem 4rem;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow:10px 5px 5px #E89759;
+}
+
+.whatisit {
+  color: #104c83;
+  font-weight: 700;
+
+}
+.whoisit {
+  color: #E89759;
+  font-weight: 700;
+}
+.nothingHere {
+  align-self: center;
+  margin: auto;
+  opacity: 60%;
+
+}
+.card li {
+  margin-right: 2rem;
 }
 
 .card_title {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: .5rem;
-  padding: .5rem;
+  padding: .5rem;  
 
 }
 
