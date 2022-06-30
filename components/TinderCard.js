@@ -83,7 +83,7 @@ const Card = () => {
         <div key={i} className="relative mx-auto">
           <TinderCard
             ref={childRefs[i]}
-            className="h-[400px] w-[300px] bg-[#E89759] rounded-xl flex justify-center items-center absolute inset-x-[50%] inset-y-[50%]"
+            className="h-[400px] w-[300px] bg-[#E89759] rounded-xl flex justify-center items-center absolute left-[30%] top-[100px]"
             onSwipe={(direction) => swiped(direction, poule.name, i)}
             onCardLeftScreen={() => outOfFrame(poule.name, i)}
             preventSwipe={["up", "down"]}
@@ -101,19 +101,13 @@ const Card = () => {
           </TinderCard>
         </div>
       ))}
-      <div className="flex justify-around">
+      <div className="flex relative top-[550px] left-[29%]">
         <div
-          className="rounded-full bg-deep-orange p-7 cursor-pointer"
+          className="rounded-full bg-deep-orange p-7 cursor-pointer mx-8"
           onClick={() => swipe("left")}
         >
           <GoRocket size={50} style={{ transform: "rotate(180deg)" }} />
         </div>
-        <button
-          className="rounded-full bg-deep-orange p-10 cursor-pointer"
-          onClick={() => goBack()}
-        >
-          Undo swipe!
-        </button>
         <div
           className="rounded-full bg-deep-orange p-7 cursor-pointer"
           onClick={() => swipe("right")}
