@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 const db = require("../db");
 
 async function seed() {
-  const poule01 = await db.user.create({
+  const poule = await db.user.create({
     data: {
       firstname: "Poule",
       lastname: "Bocuse",
@@ -129,12 +128,45 @@ async function seed() {
       },
     ],
   });
+
   await db.match.create({
     data: {
       likeconcept: true,
       likeuser: true,
-      userId: poule01.id,
-      conceptId: spatial01.id,
+      userId: kiki.id,
+      conceptId: idee05.id,
+    },
+  });
+  await db.match.create({
+    data: {
+      likeconcept: true,
+      likeuser: true,
+      userId: martine.id,
+      conceptId: idee04.id,
+    },
+  });
+  await db.match.create({
+    data: {
+      likeconcept: true,
+      likeuser: true,
+      userId: claire.id,
+      conceptId: idee03.id,
+    },
+  });
+  await db.match.create({
+    data: {
+      likeconcept: true,
+      likeuser: true,
+      userId: raymond.id,
+      conceptId: idee02.id,
+    },
+  });
+  await db.match.create({
+    data: {
+      likeconcept: true,
+      likeuser: true,
+      userId: poule.id,
+      conceptId: idee01.id,
     },
   });
 }
