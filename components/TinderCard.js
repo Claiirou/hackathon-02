@@ -37,24 +37,18 @@ const Card = ({ userList, index, idIdea, type }) => {
 
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
-    // handle the case in which go back is pressed before card goes outOfFrame
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
-    // it happens multiple outOfFrame events are queued and the card disappear
-    // during latest swipes. Only the last outOfFrame event should be considered valid
   };
 
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < index) {
-      await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+      await childRefs[currentIndex].current.swipe(dir);
     }
   };
-  // const handleMatch = (id) => {
-  //     if(match.includes(lien => lien.conceptId === ))
-  // }
   console.log(lastDirection);
   console.log("isMatched", isMatched);
   console.log(match);
+  console.log(idIdea);
   return (
     <>
       <div className="w-[50%]">
