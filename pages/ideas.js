@@ -30,7 +30,7 @@ export default function Ideas() {
   useEffect(() => {
     const queryString = qs.stringify(router.query);
     axios
-      .get(`/api/concept${queryString ? "?" : ""}${queryString}`)
+      .get(`/api/match${queryString ? "?" : ""}${queryString}`)
       .then((res) => setConceptList(res.data))
       .catch(console.error);
   }, [router.query]);
@@ -72,13 +72,13 @@ export default function Ideas() {
         <section className="grid grid-cols-3 gap-6 mb-10">
           {conceptList
             .filter(
-              (concept) =>
-                concept.domain.includes(searchValue) ||
-                concept.name.includes(searchValue)
+              (match) =>
+                match.concept.domain.includes(searchValue) ||
+                match.concept.name.includes(searchValue)
             )
 
-            .map((concept) => (
-              <MyGreatestIdea concept={concept} key={concept.id} />
+            .map((match) => (
+              <MyGreatestIdea match={match} key={match.id} />
             ))}
         </section>
       </div>
