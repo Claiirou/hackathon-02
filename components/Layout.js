@@ -11,7 +11,7 @@ export default function Layout({ children, pageTitle }) {
         <meta charset="UTF-8" />
         <meta name="description" content="Super hackathon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Header />
       <div className={s.flex_container}>
