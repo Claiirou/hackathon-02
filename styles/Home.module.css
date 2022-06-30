@@ -60,3 +60,13 @@
   font-size: .8rem;
   padding: .5rem;
 }
+
+
+@media screen and (max-width:480px) {
+  .card {
+  width: 60vw;
+  }
+  .container {
+    margin-left: 2rem;
+  }
+}
