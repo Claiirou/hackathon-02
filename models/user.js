@@ -15,3 +15,7 @@ module.exports.createUser = ({
 };
 
 module.exports.findAllUsers = () => db.user.findMany();
+
+module.exports.getOneUser = (id) => {
+  return db.user.findUnique({ where: { id: parseInt(id, 10) } });
+};
