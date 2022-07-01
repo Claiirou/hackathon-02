@@ -58,7 +58,7 @@ const Card = ({ userList, index, idIdea, type }) => {
 
   console.log(lastDirection);
   console.log(match);
-  console.log(idIdea);
+  console.log(idIdea, "coucou ");
   return (
     <>
       <div className="w-[50%]">

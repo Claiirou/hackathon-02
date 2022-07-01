@@ -69,7 +69,7 @@ async function seed() {
       description: "best idea ever",
       domain: "phamarcology",
       status: "en cours",
-      picture: "/image/fusee.png",
+      picture: "/image/avion.jpg",
       agency: "chinatown",
     },
   });
@@ -79,7 +79,7 @@ async function seed() {
       description: "Who gives a damn. Amarite?!",
       domain: "Existence",
       status: "en cours",
-      picture: "/image/fusee.png",
+      picture: "/image/lavie.jpg",
       agency: "chinatown",
     },
   });
@@ -89,7 +89,7 @@ async function seed() {
       description: "Or a lot. Up to you guys?!",
       domain: "Existence",
       status: "en cours",
-      picture: "/image/fusee.png",
+      picture: "/image/bob-le-bricoleur.jpg",
       agency: "chinatown",
     },
   });
@@ -99,7 +99,7 @@ async function seed() {
       description: "Clearly the true meaning of life",
       domain: "Existence",
       status: "en cours",
-      picture: "/image/fusee.png",
+      picture: "/image/alienship.jpg",
       agency: "chinatown",
     },
   });
