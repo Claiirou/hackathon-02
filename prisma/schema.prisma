@@ -11,7 +11,52 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id           Int         @id @default(autoincrement())
+  firstname    String      @db.VarChar(255)
+  lastname     String      @db.VarChar(255)
+  agency       String      @db.VarChar(100)
+  email        String      @unique
+  picture      String      @db.VarChar(255)
+  biography    String?
+  xpyear       Int
+  technoUser   TechnoUser? @relation(fields: [technoUserId], references: [id])
+  technoUserId Int?
+  matchId      Int?
+  Match        Match[]
+}
+
+model Concept {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  description String
+  domain      String  @db.VarChar(100)
+  status      String  @db.VarChar(100)
+  picture     String  @db.VarChar(255)
+  agency      String  @db.VarChar(100)
+  matchId     Int?
+  Match       Match[]
+}
+
+model Techno {
+  id           Int         @id @default(autoincrement())
+  picture      String      @db.VarChar(255)
+  name         String      @db.VarChar(100)
+  TechnoUser   TechnoUser? @relation(fields: [technoUserId], references: [id])
+  technoUserId Int?
+}
+
+model TechnoUser {
+  id      Int      @id @default(autoincrement())
+  technos Techno[]
+  users   User[]
+}
+
+model Match {
+  id          Int     @id @default(autoincrement())
+  user        User    @relation(fields: [userId], references: [id])
+  concept     Concept @relation(fields: [conceptId], references: [id])
+  likeconcept Boolean
+  likeuser    Boolean
+  userId      Int
+  conceptId   Int
 }
