@@ -9,7 +9,6 @@ const Card = ({ userList, index, idIdea, type }) => {
   const [lastDirection, setLastDirection] = useState();
   const currentIndexRef = useRef(currentIndex);
   const [match, setMatch] = useState([]);
-  const [isMatched, setIsMatched] = useState(false);
 
   useEffect(() => {
     axios.get("/api/match").then((res) => setMatch(res.data));
@@ -46,7 +45,6 @@ const Card = ({ userList, index, idIdea, type }) => {
     }
   };
   console.log(lastDirection);
-  console.log("isMatched", isMatched);
   console.log(match);
   console.log(idIdea);
   return (
@@ -75,12 +73,14 @@ const Card = ({ userList, index, idIdea, type }) => {
                 </div>
                 <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
                   <div className="bg-white rounded-xl px-4 py-7">
+                    <span className="font-bold"> Biographie :</span>{" "}
                     {poule.biography}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.agency}
+                    <span className="font-bold"> Agence :</span> {poule.agency}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
+                    <span className="font-bold"> Années d'expériences :</span>{" "}
                     {poule.xpyear}
                   </div>
                 </div>
@@ -110,13 +110,14 @@ const Card = ({ userList, index, idIdea, type }) => {
                 </div>
                 <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
                   <div className="bg-white rounded-xl px-4 py-7">
+                    <span className="font-bold"> Description :</span>{" "}
                     {poule.description}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.agency}
+                    <span className="font-bold"> Agence :</span> {poule.agency}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.domain}
+                    <span className="font-bold"> Domaine :</span> {poule.domain}
                   </div>
                 </div>
               </TinderCard>
