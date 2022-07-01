@@ -4,6 +4,7 @@ import TinderCard from "react-tinder-card";
 import { GoRocket } from "react-icons/go";
 import axios from "axios";
 import useSound from "use-sound";
+// import confetti from "canvas-confetti";
 
 const Card = ({ userList, index, idIdea, type }) => {
   const [currentIndex, setCurrentIndex] = useState(index);
@@ -13,6 +14,26 @@ const Card = ({ userList, index, idIdea, type }) => {
   const [isMatched, setIsMatched] = useState(false);
 
   const [play] = useSound("/sound/artifice.mp3");
+
+  // function frame() {
+  //   const colors = ["#bb0000", "#ffffff"];
+  //   confetti({
+  //     particleCount: 2000,
+  //     angle: -90,
+  //     spread: 550,
+  //     origin: { x: 0 },
+  //     colors,
+  //     startVelocity: 60,
+  //   });
+  //   confetti({
+  //     particleCount: 2000,
+  //     angle: 90,
+  //     spread: 550,
+  //     origin: { x: 1 },
+  //     colors,
+  //     startVelocity: 60,
+  //   });
+  // }
 
   useEffect(() => {
     axios.get("/api/match").then((res) => setMatch(res.data));
@@ -101,7 +122,15 @@ const Card = ({ userList, index, idIdea, type }) => {
             <div key={i} className="relative mx-auto">
               <TinderCard
                 ref={childRefs[i]}
-                onSwipe={(direction) => swiped(direction, poule.name, i)}
+                onSwipe={(direction) =>
+                  swiped(
+                    direction,
+                    play(),
+                    // requestAnimationFrame(frame),
+                    poule.name,
+                    i
+                  )
+                }
                 onCardLeftScreen={() => outOfFrame(poule.name, i)}
                 preventSwipe={["up", "down"]}
               >
