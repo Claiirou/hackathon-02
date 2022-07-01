@@ -67,7 +67,9 @@ const Card = ({ userList, index, idIdea, type }) => {
             <div key={i} className="relative mx-auto">
               <TinderCard
                 ref={childRefs[i]}
-                onSwipe={(direction) => swiped(direction, poule.firstname, i)}
+                onSwipe={(direction) =>
+                  swiped(direction, poule.firstname, play(), i)
+                }
                 onCardLeftScreen={() => outOfFrame(poule.firstname, i)}
                 preventSwipe={["up", "down"]}
               >
