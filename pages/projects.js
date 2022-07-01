@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Layout from "../components/Layout";
 
 export default function Projects() {
@@ -6,12 +5,12 @@ export default function Projects() {
     <div>
       <Layout pageTitle="Mes projets">
         <div>
-          <Image
+          <img
             src="/image/enconstruction.png"
             width={300}
             height={300}
             alt="en constrution"
-            className="mx-auto"
+            className="mx-auto bg-slate-200 rounded-2xl  border-[1px] mt-20 p-4"
           />
         </div>
       </Layout>
