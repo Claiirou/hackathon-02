@@ -15,6 +15,10 @@
     "seed": "npx prisma db seed"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.6",
     "@prisma/client": "4.0.0",
     "axios": "^0.27.2",
     "canvas-confetti": "^1.5.1",
@@ -32,7 +36,8 @@
     "react-tinder-card": "^1.4.5",
     "socket.io": "^4.5.1",
     "socket.io-client": "^4.5.1",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "react-leaf-polls": "^1.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

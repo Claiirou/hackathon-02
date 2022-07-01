@@ -3,8 +3,8 @@ import qs from "query-string";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Layout from "../components/Layout";
-import MyGreatestIdea from "../components/MyGreatestIdea";
+import Layout from "../../components/Layout";
+import MyGreatestIdea from "../../components/MyGreatestIdea";
 
 export default function Ideas() {
   const router = useRouter();

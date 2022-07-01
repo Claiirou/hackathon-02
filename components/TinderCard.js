@@ -4,39 +4,19 @@ import TinderCard from "react-tinder-card";
 import { GoRocket } from "react-icons/go";
 import axios from "axios";
 import useSound from "use-sound";
-// import confetti from "canvas-confetti";
 
 const Card = ({ userList, index, idIdea, type }) => {
   const [currentIndex, setCurrentIndex] = useState(index);
   const [lastDirection, setLastDirection] = useState();
   const currentIndexRef = useRef(currentIndex);
   const [match, setMatch] = useState([]);
-  const [isMatched, setIsMatched] = useState(false);
+  const [techno, setTechno] = useState([]);
 
   const [play] = useSound("/sound/artifice.mp3");
 
-  // function frame() {
-  //   const colors = ["#bb0000", "#ffffff"];
-  //   confetti({
-  //     particleCount: 2000,
-  //     angle: -90,
-  //     spread: 550,
-  //     origin: { x: 0 },
-  //     colors,
-  //     startVelocity: 60,
-  //   });
-  //   confetti({
-  //     particleCount: 2000,
-  //     angle: 90,
-  //     spread: 550,
-  //     origin: { x: 1 },
-  //     colors,
-  //     startVelocity: 60,
-  //   });
-  // }
-
   useEffect(() => {
     axios.get("/api/match").then((res) => setMatch(res.data));
+    axios.get("/api/techno").then((res) => setTechno(res.data));
   }, []);
 
   const childRefs = useMemo(
@@ -56,6 +36,7 @@ const Card = ({ userList, index, idIdea, type }) => {
 
   const swiped = (direction, nameToDelete, i) => {
     setLastDirection(direction);
+    play();
     updateCurrentIndex(i - 1);
   };
 
@@ -71,12 +52,11 @@ const Card = ({ userList, index, idIdea, type }) => {
   };
 
   const handleSwipeRight = () => {
-    play();
     swipe("right");
+    play();
   };
 
   console.log(lastDirection);
-  console.log("isMatched", isMatched);
   console.log(match);
   console.log(idIdea);
   return (
@@ -91,27 +71,43 @@ const Card = ({ userList, index, idIdea, type }) => {
                 onCardLeftScreen={() => outOfFrame(poule.firstname, i)}
                 preventSwipe={["up", "down"]}
               >
-                <div className="h-[450px] w-[350px] bg-[#E89759] rounded-xl flex justify-center items-center absolute left-[30%] top-[50px]">
-                  <div className="flex-col items-center">
+                <div className="h-[450px] w-[350px] bg-[#E89759] rounded-xl flex justify-center absolute left-[30%] top-[50px]">
+                  <div className="flex-col">
                     <Image
                       src={poule.picture}
-                      width={250}
-                      height={300}
+                      width={350}
+                      height={350}
                       alt={poule.firstname}
                       className="rounded-xl relative"
                     />
-                    <div>{`${poule.firstname} ${poule.lastname}`}</div>
+                    <div className="flex justify-center mt-5 font-bold text-white text-xl">{`${poule.firstname} ${poule.lastname}`}</div>
                   </div>
                 </div>
-                <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
+                <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7 pt-0">
                   <div className="bg-white rounded-xl px-4 py-7">
+                    <span className="font-bold"> Biographie :</span>{" "}
                     {poule.biography}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.agency}
+                    <span className="font-bold"> Agence :</span> {poule.agency}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
+                    <span className="font-bold"> Années d'expériences :</span>{" "}
                     {poule.xpyear}
+                  </div>
+                  <div className="bg-white rounded-xl my-5 p-4">
+                    <span className="font-bold"> Stack technique :</span>{" "}
+                    {techno.map((t) => (
+                      <div key={t.id} className="flex justify-evenly">
+                        <Image
+                          src={t.picture}
+                          width={55}
+                          height={55}
+                          alt={t.name}
+                        />
+                        <div className="mx-5">{t.name}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </TinderCard>
@@ -126,7 +122,7 @@ const Card = ({ userList, index, idIdea, type }) => {
                   swiped(
                     direction,
                     play(),
-                    // requestAnimationFrame(frame),
+
                     poule.name,
                     i
                   )
@@ -134,27 +130,33 @@ const Card = ({ userList, index, idIdea, type }) => {
                 onCardLeftScreen={() => outOfFrame(poule.name, i)}
                 preventSwipe={["up", "down"]}
               >
-                <div className="h-[450px] w-[350px] bg-[#E89759] rounded-xl flex justify-center items-center absolute left-[30%] top-[50px]">
-                  <div className="flex-col items-center">
+                <div className="h-[450px] w-[350px] bg-[#E89759] rounded-xl flex justify-center absolute left-[30%] top-[50px]">
+                  <div className="flex-col">
                     <Image
                       src={poule.picture}
-                      width={250}
-                      height={300}
+                      width={350}
+                      height={350}
                       alt={poule.name}
                       className="rounded-xl relative"
                     />
-                    <div className="text-center mt-4">{poule.name}</div>
+                    <div className="flex justify-center mt-5 font-bold text-white text-xl">
+                      {poule.name}
+                    </div>
                   </div>
                 </div>
-                <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7">
+                <div className="absolute flex-col items-end rounded-xl w-[80%] left-[100%] top-[50px] p-7 pt-0">
                   <div className="bg-white rounded-xl px-4 py-7">
+                    <span className="font-bold"> Description :</span>{" "}
                     {poule.description}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.agency}
+                    <span className="font-bold"> Agence :</span> {poule.agency}
                   </div>
                   <div className="bg-white rounded-xl my-5 p-4">
-                    {poule.domain}
+                    <span className="font-bold"> Domaine :</span> {poule.domain}
+                  </div>
+                  <div className="bg-white rounded-xl my-5 p-4">
+                    <span className="font-bold"> Status :</span> {poule.status}
                   </div>
                 </div>
               </TinderCard>

@@ -6,9 +6,9 @@ export default function Projects() {
       <Layout pageTitle="Mes projets">
         <div>
           <img
-            className="mx-auto w-80 h-80 mt-10"
             src="/image/enconstruction.png"
             alt="en constrution"
+            className="mx-auto bg-slate-200 rounded-2xl  border-[1px] mt-20 p-4"
           />
           <p className="text-center mt-6">Page en construction</p>
         </div>

@@ -2,9 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { MdNotificationsActive } from "react-icons/md";
-import { MdOutlineMessage } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
 
 export default function Header() {
   const [user, setUser] = useState([]);
@@ -29,9 +30,9 @@ export default function Header() {
         <MdNotificationsActive
           style={{ width: "30px", height: "30px", margin: "10px" }}
         />
-        <MdOutlineMessage
-          style={{ width: "30px", height: "30px", margin: "5px" }}
-        />
+        <Badge badgeContent={4} color="primary">
+          <MailIcon color="action" style={{ color: "white" }} />
+        </Badge>
         <Link href="/profilecreation">
           <a className="flex items-center">
             <CgProfile
