@@ -29,7 +29,15 @@ export default function MyGreatestIdea({ match }) {
       </div>
 
       <div className="flex gap-4 mt-4">
-        <div className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-deep-orange hover:border-deep-orange duration-500 ease-in-out">
+        <div
+          className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-deep-orange hover:border-deep-orange duration-500 ease-in-out"
+          onClick={() => {
+            router.push({
+              pathname: "/ideas/[idea_id]",
+              query: { idea_id: match.conceptId },
+            });
+          }}
+        >
           <MdComment />
         </div>
         <div className="border-[#999999] border-[1px] p-2 text-[#999999] text-2xl cursor-pointer hover:text-deep-blue hover:border-deep-blue duration-500 ease-in-out">
