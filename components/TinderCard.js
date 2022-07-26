@@ -23,7 +23,7 @@ const Card = ({ userList, index, idIdea, type }) => {
     () =>
       Array(index)
         .fill(0)
-        .map((i) => React.createRef()),
+        .map(() => React.createRef()),
     [index]
   );
 
