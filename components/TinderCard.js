@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Image from "next/image";
 import React, { useRef, useState, useMemo, useEffect } from "react";
 import TinderCard from "react-tinder-card";
@@ -23,7 +24,7 @@ const Card = ({ userList, index, idIdea, type }) => {
     () =>
       Array(index)
         .fill(0)
-        .map(() => React.createRef()),
+        .map((i) => React.createRef()),
     [index]
   );
 
