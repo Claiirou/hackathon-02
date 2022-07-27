@@ -18,7 +18,9 @@ async function handlePostUser(req, res) {
 }
 
 async function handleGetUsers(req, res) {
-  res.send(await findAllUsers());
+  const usersToGet = await findAllUsers();
+  if (!userToGet) res.status(404).send("not found");
+  else res.send(await findAllUsers());
 }
 
 export default base().post(handlePostUser).get(handleGetUsers);

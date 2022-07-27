@@ -8,8 +8,3 @@ async function handleGetTechno(req, res) {
 }
 
 export default base().get(handleGetTechno);
-
-// .catch((err) => {
-//   console.log(err);
-//   res.status(500).send("Error retrieving the categories from tdatabase");
-// })
